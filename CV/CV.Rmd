@@ -1,0 +1,125 @@
+---
+name: Jorge 
+surname: Juri
+position: "Bilingual Manager"
+address: "Vancouver, BC"
+profilepic: 
+www:  
+email: "jjuri@socialmining.cl"
+github: jjuri-socialmining
+linkedin: jjuri-manager-vancouver
+orcid: 
+date: "`r format(Sys.time(), '%B %Y')`"
+headcolor: 990000
+aboutme: "A Vancouver-based, business-focused, energetic, and diligent Manager with 14+ years of experience in the software development industry. Committed and dedicated to delivering high-quality software products. Well-versed and constantly improving my skill set in management, leadership, and communications with various audiences. Seeking a position in a company that offers continued professional development, a great challenge, uses cutting-edge technologies, values my abilities, gives me the opportunity to help to achieve its company’s goals, lets me transmit my passion for making great solutions and allows me to lead and coach their technical teams. This very CV was even compiled with code."
+docname: Jorge_Juri_Resume
+output: vitae::awesomecv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+require(xfun)
+packages <- c('vitae'     # The CV's LaTeX Template
+             ,'tibble'    # Data structure for tribbles
+             ,'magrittr'  # The Pipe %>%
+             ,'here'      # Relative File Paths
+             ,'readr'     # Data Loading
+             ,'glue'      # String Manipulation
+            )
+xfun::pkg_attach2(packages, message = FALSE)
+source(file = here("r","data.r"))
+```
+
+# Employment
+
+```{r EMPLOYMENT}
+work %>%
+  detailed_entries(
+    with = title,
+    what = unit,
+    why = detail,
+    when = glue::glue("{startMonth} {startYear} --> {endMonth} {endYear}",.na = ""),
+    where = where
+  )
+```
+
+# Education
+
+```{r EDUCATION}
+edu %>%
+  detailed_entries(
+    with = inst,
+    what = degree,
+    why = detail,
+    when = glue::glue("{startYear} --> {endYear}",.na = ""),
+    where = where
+  )
+```
+
+\pagebreak
+
+# Skills
+
+```{r SKILLS}
+skills %>%
+  detailed_entries(
+    with = area,
+    what = skills
+  )
+```
+
+# Honors
+
+```{r HONORS}
+honors %>%
+  detailed_entries(
+    with = area,
+    what = accomplishment,
+    why = detail,
+    when = year,
+    where = where
+  )
+```
+
+# Projects
+
+```{r PROJECTS}
+projects %>%
+  detailed_entries(
+    with = area,
+    what = accomplishment,
+    why = detail,
+    when = year,
+    where = where
+  )
+```
+
+# Works
+
+```{r WORKS}
+works %>%
+  detailed_entries(
+    with = area,
+    what = accomplishment,
+    why = detail,
+    when = year,
+    where = where
+  )
+```
+
+\pagebreak
+
+# Certifications
+
+```{r CERTIFICATIONS}
+certifications %>%
+  detailed_entries(
+    with = area,
+    what = accomplishment,
+    why = detail,
+    when = year,
+    where = where
+  )
+```
